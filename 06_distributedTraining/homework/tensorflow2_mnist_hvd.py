@@ -34,8 +34,8 @@ parser.add_argument('--batch_size', type=int, default=256, metavar='N',
 parser.add_argument('--use_profiler', action='store_true')
 args = parser.parse_args()
 
-parser.add_argument('--batch_size', type=int, default=256, metavar='N',
-                    help='input batch size for training (default: 256)')
+#parser.add_argument('--batch_size', type=int, default=256, metavar='N',
+#                    help='input batch size for training (default: 256)')
 #parser.add_argument('--epochs', type=int, default=1, metavar='N',
 #                    help='number of epochs to train (default: 16)')
 #parser.add_argument('--lr', type=float, default=0.01, metavar='LR',
