@@ -157,6 +157,7 @@ t0 = time.time()
 nstep = int(nsamples/args.batch_size/hvd.size())
 ntest_step = int(ntests/args.batch_size/hvd.size())
 metrics={}
+metrics['Epochs'] = []
 metrics['train_acc'] = []
 metrics['valid_acc'] = []
 metrics['train_loss'] = []
@@ -197,13 +198,13 @@ for ep in range(args.epochs):
 
     tt1 = time.time()
     print('E[%d], train Loss: %.6f, training Acc: %.3f, val loss: %.3f, val Acc: %.3f\t Time: %.3f seconds' % (ep, training_loss, training_acc, test_loss, test_acc, tt1 - tt0))
+    metrics['Epochs'].append(ep.numpy())
     metrics['train_acc'].append(training_acc.numpy())
     metrics['train_loss'].append(training_loss.numpy())
     metrics['valid_acc'].append(test_acc.numpy())
     metrics['valid_loss'].append(test_loss.numpy())
-    metrics['time_per_epochs'].append(tt1 - tt0) 
+    metrics['time_per_epochs'].append(tt1 - tt0)  
 
-
-np.savetxt("metrics.dat", np.array([metrics['train_acc'], metrics['train_loss'], metrics['valid_acc'], metrics['valid_loss'], metrics['time_per_epochs']]).transpose())
+np.savetxt("metrics.dat", np.array([metrics['Epochs'],metrics['train_acc'], metrics['train_loss'], metrics['valid_acc'], metrics['valid_loss'], metrics['time_per_epochs']]).transpose())
 t1 = time.time()
 print("Total training time: %s seconds" %(t1 - t0))
