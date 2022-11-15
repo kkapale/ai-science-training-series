@@ -27,7 +27,7 @@ os.environ["TF_XLA_FLAGS"] = "--tf_xla_auto_jit=2"
 t0 = time.time()
 
 parser = argparse.ArgumentParser(description='TensorFlow MNIST Example with Horovod')
-parser.add_argument('--epochs', default=1, type=int, help='Number of epochs to run')
+parser.add_argument('--epochs', default=10, type=int, help='Number of epochs to run')
 parser.add_argument('--num_steps', default=1000000, type=int, help="Number of steps")
 parser.add_argument('--batch_size', type=int, default=256, metavar='N',
                     help='input batch size for training (default: 256)')
