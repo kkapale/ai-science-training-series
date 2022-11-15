@@ -118,7 +118,8 @@ mnist_model = tf.keras.Sequential([
 loss = tf.losses.SparseCategoricalCrossentropy()
 
 # HVD-4 Scale the learning rate with number of workers
-opt = tf.train.AdagradOptimizer(0.01*hvd.size())
+#opt = tf.train.AdagradOptimizer(0.01*hvd.size())
+opt = tf.optimizers.Adam(0.01*hvd.size())
 
 #opt = tf.optimizers.Adam(args.lr)
 checkpoint_dir = './checkpoints/tf2_mnist'
